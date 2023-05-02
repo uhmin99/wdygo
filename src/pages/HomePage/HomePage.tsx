@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import Logo from "../../components/Logo";
 import Menus from "./MenuList";
 
-const HomePage = ({}) => {
+const HomePage= () => {
 
     return(
         <SafeAreaView style={styles.wrapper}>

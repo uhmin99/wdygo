@@ -1,22 +1,14 @@
-import React from "react";
-import HomePage from "./src/pages/HomePage/HomePage";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { routes } from "./src/utils/RouteConsts";
+import React, { useEffect } from "react";
+import { pushMainRoute } from "./src/utils/RouteUtil";
 
-const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  return(
-    <NavigationContainer>
-      <Stack.Navigator>
-        {routes.map((stackRoute) => (
-          <Stack.Screen key={stackRoute.name} {...stackRoute} />
-        ))}
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  useEffect(()=>{
+    pushMainRoute()
+  },[])
+
+  return null;
 };
 
 export default App;

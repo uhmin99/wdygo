@@ -1,8 +1,8 @@
 import React from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { RouteNames } from "../../utils/RouteConsts";
-import RouteUtil from "../../utils/RouteUtil";
-import { useNavigationContainerRef } from "@react-navigation/native";
+import { navigate } from "../../utils/RouteUtil";
+import { NavigationFunctionComponent } from "react-native-navigation";
+import { RouteNames, RouteStacks } from "../../utils/RouteConsts";
 
 interface MenuInfo{
     name: string;
@@ -10,28 +10,19 @@ interface MenuInfo{
     color: string;
 }  
 
-const navigationRef = useNavigationContainerRef<any>();
-
-const MENU_INFO_LIST: MenuInfo[] = [
-    {
-        name:"ASK WDYGO",
-        action: ()=> {
-            console.log("action pressed");
-            console.log("is ready : " + navigationRef.isReady());
-            if(navigationRef.isReady()) {
-                navigationRef.navigate(RouteNames.AskPage);
-            } else {
-                const navigationRef = useNavigationContainerRef<any>();
-                navigationRef.navigate(RouteNames.AskPage);
-            }
-            
-            
-        },
-        color:"#123456",
-    }
-];
 
 const Menus = () => {
+
+    const MENU_INFO_LIST: MenuInfo[] = [
+        {
+            name:"ASK WDYGO",
+            action: ()=> {
+                console.log("action pressed");
+                navigate(RouteStacks.MAIN, RouteNames.ASK_PAGE);
+            },
+            color:"#123456",
+        }
+    ];
 
     const menuItemRender = ({item}: {item: MenuInfo}) => {
         return(
